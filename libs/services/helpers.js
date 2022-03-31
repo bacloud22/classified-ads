@@ -1,4 +1,5 @@
 require('dotenv').config()
+const config = require('config')
 const fs = require('fs')
 // const sanitizeHtml = require('sanitize-html')
 const geoEncoder = require('../../data/geo/geoJSONEncoder')
@@ -33,10 +34,16 @@ ops.cloudMulter = Multer({
 
 ops.localMulter = Multer({ dest: 'uploads/' }).single('avatar')
 
-const LanguageDetection = require('@smodin/fast-text-language-detection')
-const lid = new LanguageDetection()
+let lid
+if(config.get('HEROKU')) {
+    lid = require('langdetect')
+} else {
+    const LanguageDetection = require('@smodin/fast-text-language-detection')
+    lid = new LanguageDetection()
+}
+
 ops.getLanguage = async (text) => {
-    const language = await lid.predict(text, 3)
+    const language = config.get('HEROKU') ? lid.detect(text) : await lid.predict(text, 3)
     if(language[0].prob > 0.5)
         return language[0].lang
     else

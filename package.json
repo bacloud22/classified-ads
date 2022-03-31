@@ -22,7 +22,6 @@
   "dependencies": {
     "@faker-js/faker": "^6.1.1",
     "@google-cloud/storage": "^5.18.3",
-    "@smodin/fast-text-language-detection": "^0.2.3",
     "@toreda/adt": "^0.4.0",
     "bcryptjs": "^2.4.3",
     "bloom-filters": "^2.0.0",

@@ -59,9 +59,7 @@ module.exports = (fastify) => {
                 error: error
             })
         } else {
-            const html = body.desc
-            // Tidy not working on Ubuntu
-            // const html = await tidyP(body.desc, opt)
+            const html = await tidyP(body.desc, opt)
             body.desc = new stringTransformer(html).sanitizeHTML().cleanSensitive().valueOf()
             body.lang = await helpers.getLanguage(body.desc)
             // Files other than images are undefined
