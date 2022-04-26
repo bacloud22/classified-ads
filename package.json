@@ -75,8 +75,10 @@
     "protobufjs": "^6.11.2",
     "sanitize-html": "^2.7.0",
     "sharp": "^0.30.3",
+    "socket.io": "^4.5.0",
     "toad-scheduler": "^1.6.0",
     "under-pressure": "^5.8.0",
+    "uuid": "^8.3.2",
     "visitor-counter": "github:bacloud22/visitor-counter#3",
     "wink-nlp-utils": "^2.0.7"
   },
